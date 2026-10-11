@@ -1,7 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"io"
+	"log"
+	"os"
 	"runtime"
 	"time"
 )
@@ -33,6 +35,16 @@ func cpuWork(iterations uint64) uint64 {
 }
 
 func main() {
+	file, err := os.OpenFile("app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatalf("Failed to open log file: %v", err)
+	}
+	defer file.Close()
+
+	// Combine the file and terminal outputs
+	multiWriter := io.MultiWriter(os.Stdout, file)
+	log.SetOutput(multiWriter)
+
 	const jobs = 300
 	const iterationsPerJob = 10000
 
@@ -45,10 +57,10 @@ func main() {
 	}
 	elapsed := time.Since(start)
 
-	fmt.Printf("CPUs reported by Go: %d\n", runtime.NumCPU())
-	fmt.Printf("GOMAXPROCS: %d\n", runtime.GOMAXPROCS(0)) // returns the previous setting of max usable CPUs
-	fmt.Printf("Jobs: %d\n", jobs)
-	fmt.Printf("Iterations per job: %d\n", iterationsPerJob)
-	fmt.Printf("Checksum: %d\n", checksum)
-	fmt.Printf("Duration: %s\n", elapsed)
+	log.Printf("CPUs reported by Go: %d\n", runtime.NumCPU())
+	log.Printf("GOMAXPROCS: %d\n", runtime.GOMAXPROCS(0)) // returns the previous setting of max usable CPUs
+	log.Printf("Jobs: %d\n", jobs)
+	log.Printf("Iterations per job: %d\n", iterationsPerJob)
+	log.Printf("Checksum: %d\n", checksum)
+	log.Printf("Duration: %s\n", elapsed)
 }
