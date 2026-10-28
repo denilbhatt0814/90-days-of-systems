@@ -1,0 +1,19 @@
+# Generated application logs. Existing tracked logs are retained as historical
+# artifacts; this prevents future runs from adding more of them accidentally.
+*.log
+
+# Local binaries and ad-hoc benchmark output.
+*.exe
+*.test
+/bin/
+
+# Default names emitted by `go build .` in the Week 1 program directories.
+/week-01-go-concurrency/experiments/cpu-concurrency/sequential/sequential
+/week-01-go-concurrency/experiments/cpu-concurrency/workerpool/workerpool
+/week-01-go-concurrency/experiments/cpu-concurrency/workerpool-isolate-workers/workerpool-isolate-workers
+/week-01-go-concurrency/experiments/http-concurrency/client/client
+/week-01-go-concurrency/experiments/http-concurrency/server/server
+/week-01-go-concurrency/experiments/simulated-io/simulated-io
+
+# Keep the existing tmp artifacts untouched, but ignore new files created there.
+/tmp/*
