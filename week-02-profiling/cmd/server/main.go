@@ -25,7 +25,7 @@ func isPrime(n uint) bool {
 func countPrimeToN(N uint) uint {
 
 	var count uint = 0
-	for i := uint(2); i < N; i++ {
+	for i := uint(2); i <= N; i++ {
 		if isPrime(i) {
 			count++
 		}
@@ -70,7 +70,24 @@ func handleCPUTask(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleWaitTask(w http.ResponseWriter, r *http.Request) {
+	// start := time.Now()
+	msWaitDurationStr := r.URL.Query().Get("ms")
 
+	// parsing
+	msWaitDuration := 100
+	if msWaitDurationStr != "" {
+		value, err := strconv.Atoi(msWaitDurationStr)
+		if err != nil || value <= 0 {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("n must be a valid int above 0"))
+			return
+		}
+		msWaitDuration = value
+	}
+
+	time.Sleep(time.Duration(msWaitDuration) * time.Millisecond)
+	// elapsed := time.Since(start)
+	w.WriteHeader(http.StatusOK)
 }
 
 func main() {
