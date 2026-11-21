@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	_ "net/http/pprof"
 	"strconv"
 	"time"
 )
@@ -92,16 +93,24 @@ func handleWaitTask(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
+	go func() {
+		log.Println("Profiling server listening on 127.0.0.1:6060")
+		err := http.ListenAndServe("127.0.0.1:6060", http.DefaultServeMux)
+		if err != nil {
+			log.Printf("Profiling server failed: %v", err)
+		}
+	}()
+
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /cpu", handleCPUTask)
 	mux.HandleFunc("GET /wait", handleWaitTask)
 
 	server := &http.Server{
-		Addr:    ":6060",
+		Addr:    ":8080",
 		Handler: mux,
 	}
 
-	log.Println("Starting server on :6060")
+	log.Println("Starting server on :8080")
 	log.Fatal(server.ListenAndServe())
 }
