@@ -103,7 +103,9 @@ func handleWaitTask(w http.ResponseWriter, r *http.Request) {
 
 	time.Sleep(time.Duration(msWaitDuration) * time.Millisecond)
 	elapsed := time.Since(start)
+
 	w.WriteHeader(http.StatusOK)
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(WaitResponse{
 		DurationMs: elapsed.Seconds() * 1000,
 	})
