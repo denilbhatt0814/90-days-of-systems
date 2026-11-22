@@ -53,6 +53,12 @@ func handleCPUTask(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("n must be a valid int above 0"))
 			return
 		}
+
+		if value > 100000 {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("n must be a valid int between 0 and 100000"))
+			return
+		}
 		n = value
 	}
 
@@ -70,8 +76,12 @@ func handleCPUTask(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+type WaitResponse struct {
+	DurationMs float64 `json:"duration_ms"`
+}
+
 func handleWaitTask(w http.ResponseWriter, r *http.Request) {
-	// start := time.Now()
+	start := time.Now()
 	msWaitDurationStr := r.URL.Query().Get("ms")
 
 	// parsing
@@ -80,15 +90,23 @@ func handleWaitTask(w http.ResponseWriter, r *http.Request) {
 		value, err := strconv.Atoi(msWaitDurationStr)
 		if err != nil || value <= 0 {
 			w.WriteHeader(http.StatusBadRequest)
-			w.Write([]byte("n must be a valid int above 0"))
+			w.Write([]byte("ms must be a valid int above 0"))
+			return
+		}
+		if value > 10000 {
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte("ms must be a valid int between 0 and 10000"))
 			return
 		}
 		msWaitDuration = value
 	}
 
 	time.Sleep(time.Duration(msWaitDuration) * time.Millisecond)
-	// elapsed := time.Since(start)
+	elapsed := time.Since(start)
 	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(WaitResponse{
+		DurationMs: elapsed.Seconds() * 1000,
+	})
 }
 
 func main() {
