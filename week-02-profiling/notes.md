@@ -19,3 +19,23 @@ go tool pprof week-02-profiling/results/profiles/wait.goroutine.snapshot.prof
 
 FLAME GRAPH
 go tool pprof -http=127.0.0.1:8081 week-02-profiling/bin/server week-02-profiling/results/profiles/cpu.cpu.prof
+
+Heap Profile baseline:
+curl -o week-02-profiling/results/profiles/baseline.heap.prof \
+  "http://127.0.0.1:6060/debug/pprof/heap?gc=1"
+
+gc=1 parameter requests a garbage collection before capturing the profile
+
+Inspect allocated versus retained memory
+go tool pprof \
+  -sample_index=inuse_space \
+  week-02-profiling/results/profiles/baseline.heap.prof
+
+inuse_space:	Estimated heap bytes still live at the time of profiling
+
+
+go tool pprof \
+  -sample_index=alloc_space \
+  week-02-profiling/results/profiles/baseline.heap.prof
+
+alloc_space:	Estimated cumulative heap bytes allocated over the process's lifetime
