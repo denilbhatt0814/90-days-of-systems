@@ -39,3 +39,4 @@ go tool pprof \
   week-02-profiling/results/profiles/baseline.heap.prof
 
 alloc_space:	Estimated cumulative heap bytes allocated over the process's lifetime
+
