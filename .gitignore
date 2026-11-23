@@ -17,3 +17,8 @@
 
 # Keep the existing tmp artifacts untouched, but ignore new files created there.
 /tmp/*
+
+# Week 2 local builds and disposable captures; recorded evidence remains tracked.
+/week-02-profiling/bin/
+/week-02-profiling/tmp/
+/week-02-profiling/cmd/server/server
