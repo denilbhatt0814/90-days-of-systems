@@ -1,0 +1,46 @@
+goos: linux
+goarch: amd64
+pkg: example.com/90-days-of-systems/week-02-profiling/cmd/server
+cpu: AMD Ryzen 9 6900HS with Radeon Graphics        
+BenchmarkIsPrime/n=97-2    	44126612	        27.43 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=97-2    	44695323	        27.55 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=97-2    	43151270	        27.40 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=97-2    	43110188	        27.35 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=97-2    	44085345	        27.49 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9973-2  	 3804852	       315.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9973-2  	 3847084	       313.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9973-2  	 3785772	       317.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9973-2  	 3841916	       318.0 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9973-2  	 3838294	       320.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=99991-2 	 1218018	       982.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=99991-2 	 1224951	       978.1 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=99991-2 	 1216536	       986.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=99991-2 	 1225374	       981.8 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=99991-2 	 1227914	       976.3 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=100000-2         	341135558	         3.565 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=100000-2         	338862296	         3.682 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=100000-2         	344518846	         3.643 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=100000-2         	337923913	         3.640 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=100000-2         	356933416	         3.617 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9409-2           	 3955358	       296.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9409-2           	 4136296	       293.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9409-2           	 4154488	       296.9 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9409-2           	 4027018	       296.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkIsPrime/n=9409-2           	 4090048	       294.4 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=1000-2     	   70456	     17078 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=1000-2     	   70208	     17317 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=1000-2     	   69058	     17270 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=1000-2     	   70388	     17221 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=1000-2     	   69640	     17450 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=10000-2    	    2876	    404954 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=10000-2    	    2830	    404405 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=10000-2    	    3022	    406927 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=10000-2    	    2923	    407027 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=10000-2    	    2949	    404203 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=100000-2   	     134	   8920738 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=100000-2   	     134	   8922294 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=100000-2   	     133	   9019876 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=100000-2   	     133	   9048421 ns/op	       0 B/op	       0 allocs/op
+BenchmarkCountPrimeToN/n=100000-2   	     133	   8962696 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	example.com/90-days-of-systems/week-02-profiling/cmd/server	48.327s

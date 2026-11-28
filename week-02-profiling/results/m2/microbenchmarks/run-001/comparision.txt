@@ -1,0 +1,46 @@
+goos: linux
+goarch: amd64
+pkg: example.com/90-days-of-systems/week-02-profiling/cmd/server
+cpu: AMD Ryzen 9 6900HS with Radeon Graphics        
+                         │ ./week-02-profiling/results/m2/microbenchmarks/run-001/baseline.txt │ ./week-02-profiling/results/m2/microbenchmarks/run-001/optimized.txt │
+                         │                               sec/op                                │                    sec/op                      vs base               │
+IsPrime/n=97-2                                                                   291.50n ± ∞ ¹                                    27.43n ± ∞ ¹  -90.59% (p=0.008 n=5)
+IsPrime/n=9973-2                                                                30684.0n ± ∞ ¹                                    317.8n ± ∞ ¹  -98.96% (p=0.008 n=5)
+IsPrime/n=99991-2                                                              306177.0n ± ∞ ¹                                    981.8n ± ∞ ¹  -99.68% (p=0.008 n=5)
+IsPrime/n=100000-2                                                                3.693n ± ∞ ¹                                    3.640n ± ∞ ¹        ~ (p=0.095 n=5)
+IsPrime/n=9409-2                                                                  298.7n ± ∞ ¹                                    296.6n ± ∞ ¹        ~ (p=0.381 n=5)
+CountPrimeToN/n=1000-2                                                           242.90µ ± ∞ ¹                                    17.27µ ± ∞ ¹  -92.89% (p=0.008 n=5)
+CountPrimeToN/n=10000-2                                                         17831.6µ ± ∞ ¹                                    405.0µ ± ∞ ¹  -97.73% (p=0.008 n=5)
+CountPrimeToN/n=100000-2                                                       1399.489m ± ∞ ¹                                    8.963m ± ∞ ¹  -99.36% (p=0.008 n=5)
+geomean                                                                           45.48µ                                          2.215µ        -95.13%
+¹ need >= 6 samples for confidence interval at level 0.95
+
+                         │ ./week-02-profiling/results/m2/microbenchmarks/run-001/baseline.txt │ ./week-02-profiling/results/m2/microbenchmarks/run-001/optimized.txt │
+                         │                                B/op                                 │                     B/op                      vs base                │
+IsPrime/n=97-2                                                                     0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=9973-2                                                                   0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=99991-2                                                                  0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=100000-2                                                                 0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=9409-2                                                                   0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+CountPrimeToN/n=1000-2                                                             0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+CountPrimeToN/n=10000-2                                                            0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+CountPrimeToN/n=100000-2                                                           0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+geomean                                                                                      ³                                                 +0.00%               ³
+¹ need >= 6 samples for confidence interval at level 0.95
+² all samples are equal
+³ summaries must be >0 to compute geomean
+
+                         │ ./week-02-profiling/results/m2/microbenchmarks/run-001/baseline.txt │ ./week-02-profiling/results/m2/microbenchmarks/run-001/optimized.txt │
+                         │                              allocs/op                              │                  allocs/op                    vs base                │
+IsPrime/n=97-2                                                                     0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=9973-2                                                                   0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=99991-2                                                                  0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=100000-2                                                                 0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+IsPrime/n=9409-2                                                                   0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+CountPrimeToN/n=1000-2                                                             0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+CountPrimeToN/n=10000-2                                                            0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+CountPrimeToN/n=100000-2                                                           0.000 ± ∞ ¹                                    0.000 ± ∞ ¹       ~ (p=1.000 n=5) ²
+geomean                                                                                      ³                                                 +0.00%               ³
+¹ need >= 6 samples for confidence interval at level 0.95
+² all samples are equal
+³ summaries must be >0 to compute geomean

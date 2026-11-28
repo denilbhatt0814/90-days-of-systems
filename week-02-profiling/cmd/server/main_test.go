@@ -34,8 +34,6 @@ func Test_isPrime(t *testing.T) {
 
 }
 
-var sink interface{}
-
 func BenchmarkIsPrime(b *testing.B) {
 	inputs := []uint{
 		97,

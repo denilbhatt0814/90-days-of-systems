@@ -47,3 +47,16 @@ alloc_space:	Estimated cumulative heap bytes allocated over the process's lifeti
 
 
 ```
+
+
+-----
+to run a bench mark:
+GOMAXPROCS=2 go test ./week-02-profiling/cmd/server \
+  -run='^$' \
+  -bench=. \
+  -benchmem \
+  -count=5 \
+  | tee week-02-profiling/results/m2/microbenchmarks/run-001/optimized.txt
+
+to compare benchmarks
+go install golang.org/x/perf/cmd/benchstat@latest
