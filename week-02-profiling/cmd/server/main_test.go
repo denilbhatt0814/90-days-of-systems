@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func Test_isPrime(t *testing.T) {
 	var testCases = []struct {
@@ -31,6 +34,26 @@ func Test_isPrime(t *testing.T) {
 
 }
 
+var sink interface{}
+
+func BenchmarkIsPrime(b *testing.B) {
+	inputs := []uint{
+		97,
+		9973,
+		99991,
+		100000,
+		9409,
+	}
+
+	for _, n := range inputs {
+		b.Run(fmt.Sprintf("n=%d", n), func(b *testing.B) {
+			for b.Loop() {
+				isPrime(n)
+			}
+		})
+	}
+}
+
 func Test_countPrimeToN(t *testing.T) {
 	t.Run("countPrimeToN(100)", func(t *testing.T) {
 		var input uint = 100
@@ -40,4 +63,20 @@ func Test_countPrimeToN(t *testing.T) {
 			t.Errorf("countPrimeToN(%d): expected %v, actual %v", input, expected, got)
 		}
 	})
+}
+
+func BenchmarkCountPrimeToN(b *testing.B) {
+	inputs := []uint{
+		1000,
+		10000,
+		100000,
+	}
+
+	for _, n := range inputs {
+		b.Run(fmt.Sprintf("n=%d", n), func(b *testing.B) {
+			for b.Loop() {
+				countPrimeToN(n)
+			}
+		})
+	}
 }
