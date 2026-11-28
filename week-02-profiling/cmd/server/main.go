@@ -15,7 +15,7 @@ func isPrime(n uint) bool {
 		return false
 	}
 
-	for i := uint(2); i < n; i++ {
+	for i := uint(2); i <= n/i; i++ {
 		if n%i == 0 {
 			return false
 		}
