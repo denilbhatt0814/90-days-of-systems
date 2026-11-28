@@ -37,7 +37,7 @@ func Test_countPrimeToN(t *testing.T) {
 		var expected uint = 25
 		got := countPrimeToN(input)
 		if got != expected {
-			t.Errorf("isPrime(%d): expected %v, actual %v", input, expected, got)
+			t.Errorf("countPrimeToN(%d): expected %v, actual %v", input, expected, got)
 		}
 	})
 }
